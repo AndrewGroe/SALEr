@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_parts"
+        android:icon="@drawable/ic_desktop_windows_black_24dp"
+        android:title="@string/title_parts" />
+
+    <item
+        android:id="@+id/navigation_games"
+        android:icon="@drawable/ic_videogame_asset_black_24dp"
+        android:title="@string/title_games" />
+
+    <item
+        android:id="@+id/navigation_laptops"
+        android:icon="@drawable/ic_laptop_black_24dp"
+        android:title="@string/title_laptops" />
+
+</menu>
