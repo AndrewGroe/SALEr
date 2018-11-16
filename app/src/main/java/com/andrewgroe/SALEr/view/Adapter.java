@@ -47,7 +47,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
         myViewHolder.postDomain.setText(mData.get(i).getData().getDomain());
         myViewHolder.postAuthor.setText("u/ " + mData.get(i).getData().getAuthor());
         myViewHolder.postScore.setText("score: " + String.valueOf(mData.get(i).getData().getScore()));
-        myViewHolder.commentCount.setText(String.valueOf(mData.get(i).getData().getScore()));
+        myViewHolder.commentCount.setText(String.valueOf(mData.get(i).getData().getNumComments()));
         String createdTime = EpochToDate(mData.get(i).getData().getCreated(), "M/d/yy, h:mm a");
         myViewHolder.created.setText(createdTime);
 
