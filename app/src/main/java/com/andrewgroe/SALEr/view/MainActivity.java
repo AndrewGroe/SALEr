@@ -31,9 +31,10 @@ public class MainActivity extends AppCompatActivity implements RedditView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Init Bottom NavBar & Listener
+        // Init Bottom NavBar & Listeners
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.setOnNavigationItemReselectedListener(mOnNavigationItemReselectedListener);
 
         // Init Toolbar
         Toolbar toolbar = findViewById(R.id.toolBar);
@@ -93,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements RedditView {
         if (progressDialog != null) {
             progressDialog.dismiss();
         }
-        getSupportActionBar().setTitle(currentSub);
+        getSupportActionBar().setTitle("r/" + currentSub);
     }
 
     // Save data (Activity Restarted / Orientation Change)
@@ -104,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements RedditView {
         outState.putString("current_sub_state", currentSub);
     }
 
-    // Bottom NavBar Listener
+    // Listen For Bottom NavBar Selection
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -128,6 +129,16 @@ public class MainActivity extends AppCompatActivity implements RedditView {
                     return true;
             }
             return false;
+        }
+    };
+
+    // Listen For Bottom NavBar Reselection
+    // Avoid Re-fetching Data on Reselection
+    private BottomNavigationView.OnNavigationItemReselectedListener mOnNavigationItemReselectedListener
+            = new BottomNavigationView.OnNavigationItemReselectedListener() {
+
+        @Override
+        public void onNavigationItemReselected(@NonNull MenuItem item) {
         }
     };
 }

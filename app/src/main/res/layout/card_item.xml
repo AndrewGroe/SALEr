@@ -8,6 +8,23 @@
     android:layout_marginBottom="8dp"
     android:background="@color/colorPrimaryDark">
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/thumbnail"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/flair"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorAccent"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/thumbnail"
+        app:layout_constraintStart_toStartOf="@id/thumbnail"
+        app:layout_constraintTop_toBottomOf="@id/thumbnail" />
+
     <TextView
         android:id="@+id/title_textView"
         android:layout_width="0dp"
@@ -15,11 +32,10 @@
         android:layout_marginStart="8dp"
         android:textColor="@color/colorWhite"
         android:textSize="16sp"
-
         app:layout_constraintBottom_toTopOf="@+id/domain_textView"
         app:layout_constraintEnd_toStartOf="@+id/comments_button"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/thumbnail"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Title" />
 
@@ -33,7 +49,7 @@
         app:layout_constraintBottom_toTopOf="@+id/score_textView"
         app:layout_constraintEnd_toStartOf="@id/comments_button"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/thumbnail"
         app:layout_constraintTop_toBottomOf="@id/title_textView"
         tools:text="Domain" />
 
@@ -48,7 +64,7 @@
         app:layout_constraintBottom_toTopOf="@id/created_textView"
         app:layout_constraintEnd_toStartOf="@id/comments_button"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/thumbnail"
         tools:text="Score: 215" />
 
     <TextView
@@ -78,7 +94,7 @@
         android:textSize="12sp"
         app:layout_constraintEnd_toStartOf="@id/comment_count_textView"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/thumbnail"
         app:layout_constraintTop_toBottomOf="@id/score_textView"
         tools:text="12-12-2012" />
 

@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.andrewgroe.SALEr.R;
 import com.andrewgroe.SALEr.model.children.Children;
+import com.bumptech.glide.Glide;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -43,13 +44,22 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull myViewHolder myViewHolder, int i) {
 
-        myViewHolder.postTitle.setText(mData.get(i).getData().getTitle());
+        Glide.with(mContext).load(mData.get(i).getData().getThumbnail()).into(myViewHolder.thumbnail);
+
+        // Check For Ampersand Escape Char
+        if (mData.get(i).getData().getTitle().contains("&amp")) {
+            String title = mData.get(i).getData().getTitle();
+            title = title.replace("&amp;", "&");
+            myViewHolder.postTitle.setText(title);
+        } else myViewHolder.postTitle.setText(mData.get(i).getData().getTitle());
+
         myViewHolder.postDomain.setText(mData.get(i).getData().getDomain());
         myViewHolder.postAuthor.setText("u/ " + mData.get(i).getData().getAuthor());
         myViewHolder.postScore.setText("score: " + String.valueOf(mData.get(i).getData().getScore()));
         myViewHolder.commentCount.setText(String.valueOf(mData.get(i).getData().getNumComments()));
         String createdTime = EpochToDate(mData.get(i).getData().getCreated(), "M/d/yy, h:mm a");
         myViewHolder.created.setText(createdTime);
+        myViewHolder.flair.setText(mData.get(i).getData().getLinkFlairText());
 
         final String url = mData.get(i).getData().getUrl();
         final String permalink = mData.get(i).getData().getPermalink();
@@ -90,8 +100,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
 
     class myViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
 
-        TextView postTitle, postAuthor, postDomain, postScore, commentCount, created;
-        ImageView commentsButton;
+        TextView postTitle, postAuthor, postDomain, postScore, commentCount, created, flair;
+        ImageView commentsButton, thumbnail;
         View mRowItem;
 
         myViewHolder(@NonNull View itemView) {
@@ -105,6 +115,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
             postScore = itemView.findViewById(R.id.score_textView);
             commentCount = itemView.findViewById(R.id.comment_count_textView);
             commentsButton = itemView.findViewById(R.id.comments_button);
+            thumbnail = itemView.findViewById(R.id.thumbnail);
+            flair = itemView.findViewById(R.id.flair);
         }
 
         @Override
