@@ -1,6 +1,9 @@
 # SALEr
-Android app for browsing popular tech sales subreddits.
-Backend uses Retrofit and Gson to fetch and convert JSON response from Reddit API.
+Android app for browsing popular tech sales subreddits. 
+
+Allows the user to quickly and easily look for sales on PC parts, Games, and Laptops. Uses implicit intents to allow the user to select their preferred reddit app to read or submit comments.
+
+Backend uses Retrofit and Gson to fetch and convert JSON response from Reddit API. I decided to avoid any Reddit API libraries for an added challenge.
 Features a dark theme to conserve battery.
 
 <h3>Project Details</h3>
